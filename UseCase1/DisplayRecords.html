@@ -1,43 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Records</title>
+  <meta charset="utf-8">
+  <title>Display Records</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
-    <h3>Current records available:</h3>
-    <table border="4">
+  <div class="container-fluid h-100">
+    <div class="row ">
+      <div class="col-12">
+        <h1 class="text-center"><i>--- Welcome Techies ---</i></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 p-0">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light p-0 justify-content-center ">
+          <a class="nav-link mr-5 " href="usecase1-Snehal.html">Main Page</a>
+          <a class="nav-link" href="RegistrationPage.html">Registration</a>
+        </nav>
+      </div>
+    </div>
+    <div class="row h-100">
+      <div class="col-md-2 bg-info ">
+        <h5 class="text-center"><i>Famous Quotes</i></h5>
+        <br>
+        <p class="text-center">"The greatest glory in living lies not in never falling, but in rising every time we fall." -Nelson Mandela</p>
+        <br>
+        <p class="text-center">"The way to get started is to quit talking and begin doing." -Walt Disney</p>
+        <br>
+        <p class="text-center">"Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking." -Steve Jobs</p>
 
-        <tr>
-            <th>Photo</th>
-            <th>Name</th>
-            <th>DOB</th>
-            <th>Gender</th>
-            <th>Address</th>
-            <th>Interested Tech Stack</th>
-            <th>Country</th>
-        </tr>
-        <tr>
-            <td><img src="image.png" alt="test image"> </td>
-            <td>Snehal Sawant</td>
-            <td>11/12/1993</td>
-            <td>Female</td>
-            <td>abc</td>
+      </div>
+      <div class="col-md-8 bg-success ">
+        <h3>Current records available:</h3>
+        <table border="4">
+    
+            <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Interested Tech Stack</th>
+                <th>Country</th>
+            </tr>
+            <tr>
+                <td><img src="image.png" alt="test image"> </td>
+                <td>Snehal Sawant</td>
+                <td>11/12/1993</td>
+                <td>Female</td>
+                <td>abc</td>
+    
+                <td>
+                    <ul>
+                        <li>React</li>
+                        <li>HTML</li>
+                    </ul>
+                </td>
+                <td>USA</td>
+            </tr>
+    
+        </table>
+      </div>
+      <div class="col-md-2 bg-warning " style="overflow-y: scroll">
 
-            <td>
-                <ul>
-                    <li>React</li>
-                    <li>HTML</li>
-                </ul>
-            </td>
-            <td>USA</td>
-        </tr>
+        <h4>CSS Syntax</h4>
+        <ul>
+          <li>The selector points to the HTML element you want to style.</li>
+          <li>The declaration block contains one or more declarations separated by semicolons.
+          </li>
 
-    </table>
-    <h5>To go back to main page <a href="usecase1-Snehal.html">Click Me</a> </h5>
+          <li> Each declaration includes a CSS property name and a value, separated by a colon.
+          </li>
+          <li> Multiple CSS declarations are separated with semicolons, and declaration blocks are surrounded by curly
+            braces.
+          </li>
+          </li>
+        </ul>
+        <br />
+        <h4>CSS Selectors</h4>
+        <ul>
+          <li>Simple selectors (select elements based on name, id, class)</li>
+          <li>Combinator selectors (select elements based on a specific relationship between them)</li>
+          <li>Pseudo-class selectors (select elements based on a certain state)</li>
+          <li>Pseudo-elements selectors (select and style a part of an element)</li>
+          <li>Attribute selectors (select elements based on an attribute or attribute value)</li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    <footer class="footer ">
+      <p class="italic bg-primary m-0 text-center text-white">
+        Where there is will there is way!!!!
+      </p>
+
+    </footer>
+  </div>
+
 </body>
 
 </html>

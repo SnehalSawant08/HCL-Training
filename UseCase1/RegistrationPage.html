@@ -1,74 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Page</title>
+  <meta charset="utf-8">
+  <title>Registration Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1 ><i>Welcome to the Registration!!!!</i></h1>
-    <form >
-        <table>
-            <tr>
-                <td>Photo:</td>
-                <td><input type="image" src="image.png" alt="test image"></td>                
-            </tr>
-            <tr>
-                <td><label>Name:</label></td>
-                <td><input type="textbox" size="40"></td>
-            </tr>
-            <tr>
-                <td><label>DOB:</label></td>
-                <td> <input type="date"></td>
-            </tr>
-            <tr>
-                <td><label>Gender:</label></td>
-                <td>
-                    <input type="radio" name="gender" value="female">
-                    <label>Female</label>
-                    <input type="radio" name="gender" value="male">
-                    <label>Male</label>
-                    <input type="radio" name="gender" value="other">
-                    <label>Other</label>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Address:</label></td>
-                <td><textarea rows="10" cols="50" placeholder="Please enter your address"></textarea></td>
-            </tr>
-            <tr>
-                <td><label>Password:</label></td>
-                <td><input type="password" maxlength="8" id="pwd1" placeholder="Enter your password"></td>
-            </tr>
-            <tr>
-                <td><label>Confirm your password:</label></td>
-                <td><input type="password" maxlength="8" id="pwd2" placeholder="Enter password again"></td>
-            </tr>
-            <tr>
-                <td><label>Select your tech stack:</label></td>
-                <td>
-                    <input type="checkbox" value="Html">
-                    <label>HTML</label><br>
-                    <input type="checkbox" value="React">
-                    <label>React</label><br>
-                    <input type="checkbox" value="Java">
-                    <label>Java</label><br>
-                </td>
-            </tr>
-            <tr>
-                <td> <label>Select your Country:</label></td>
-                <td>
-                    <select>
-                        <option></option>
-                        <option value="India">India</option>
-                        <option value="USA">USA</option>
-                    </select></td>
-            </tr>
-        </table>
-    </form>
-    <h5>To go back to main page <a href="usecase1-Snehal.html">Click Me</a> </h5>
+  <div class="container-fluid h-100">
+    <div class="row ">
+      <div class="col-12">
+        <h1 class="text-center"><i>Welcome to the Registration!!!!</i></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 p-0">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light p-0 justify-content-center ">
+          <a class="nav-link mr-5 " href="usecase1-Snehal.html">Main Page</a>
+          <a class="nav-link" href="DisplayRecords.html">Display Records</a>
+        </nav>
+      </div>
+    </div>
+    <div class="row h-100">
+      <div class="col-md-2 bg-info ">
+        <h5 class="text-center"><i>Famous Quotes</i></h5>
+        <br>
+        <p class="text-center">"The greatest glory in living lies not in never falling, but in rising every time we fall." -Nelson Mandela</p>
+        <br>
+        <p class="text-center">"The way to get started is to quit talking and begin doing." -Walt Disney</p>
+        <br>
+        <p class="text-center">"Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking." -Steve Jobs</p>
+
+      </div>
+      <div class="col-md-8 bg-success ">
+        <form >
+            <div class="form-group">
+            <table class="font-weight-bold ">
+                <tr>
+                    <td>Photo:</td>
+                    <td><input type="image" src="image.png" alt="test image"></td>                
+                </tr>
+                <tr>
+                    <td><label>Name:</label></td>
+                    <td><input class="form-control mb-2" type="textbox" size="40"></td>
+                </tr>
+                <tr>
+                    <td><label>DOB:</label></td>
+                    <td> <input type="date"></td>
+                </tr>
+                <tr>
+                    <td><label>Gender:</label></td>
+                    <td>
+                        <input type="radio" name="gender" value="female">
+                        <label>Female</label>
+                        <input type="radio" name="gender" value="male">
+                        <label>Male</label>
+                        <input type="radio" name="gender" value="other">
+                        <label>Other</label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><label>Address:</label></td>
+                    <td><textarea class="form-control mb-2" rows="10" cols="50" placeholder="Please enter your address"></textarea></td>
+                </tr>
+                <tr>
+                    <td><label>Password:</label></td>
+                    <td><input class="form-control mb-2" type="password" maxlength="8" id="pwd1" placeholder="Enter your password"></td>
+                </tr>
+                <tr>
+                    <td><label>Confirm your password:</label></td>
+                    <td><input  class="form-control mb-2" type="password" maxlength="8" id="pwd2" placeholder="Enter password again"></td>
+                </tr>
+                <tr>
+                    <td><label>Select your tech stack:</label></td>
+                    <td>
+                        <input type="checkbox" value="Html">
+                        <label>HTML</label><br>
+                        <input type="checkbox" value="React">
+                        <label>React</label><br>
+                        <input type="checkbox" value="Java">
+                        <label>Java</label><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <label>Select your Country:</label></td>
+                    <td>
+                        <select>
+                            <option></option>
+                            <option value="India">India</option>
+                            <option value="USA">USA</option>
+                        </select>
+                    </td>
+                        
+                </tr>
+            </table>
+        </div>
+        </form>
+      </div>
+      <div class="col-md-2 bg-warning " style="overflow-y: scroll">
+
+        <h4>CSS Syntax</h4>
+        <ul>
+          <li>The selector points to the HTML element you want to style.</li>
+          <li>The declaration block contains one or more declarations separated by semicolons.
+          </li>
+
+          <li> Each declaration includes a CSS property name and a value, separated by a colon.
+          </li>
+          <li> Multiple CSS declarations are separated with semicolons, and declaration blocks are surrounded by curly
+            braces.
+          </li>
+          </li>
+        </ul>
+        <br />
+        <h4>CSS Selectors</h4>
+        <ul>
+          <li>Simple selectors (select elements based on name, id, class)</li>
+          <li>Combinator selectors (select elements based on a specific relationship between them)</li>
+          <li>Pseudo-class selectors (select elements based on a certain state)</li>
+          <li>Pseudo-elements selectors (select and style a part of an element)</li>
+          <li>Attribute selectors (select elements based on an attribute or attribute value)</li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    <footer class="footer ">
+      <p class="italic bg-primary m-0 text-center text-white">
+        Where there is will there is way!!!!
+      </p>
+
+    </footer>
+  </div>
+
 </body>
 
 </html>
