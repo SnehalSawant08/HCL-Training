@@ -1,14 +1,19 @@
 import React, { Fragment } from 'react';
 
-import './App.css';
-
-import Footer from './Footer';
 import Login from './Login';
-function App() {
+import './App.css';
+import ErrorBoundary from './ErrorBoundary'
+import Footer from './Footer';
+
+function App(props) {
+  
+  
   return (
+    
     <Fragment>
       <div className="container-fluid h-100">
         <h1 className="text-center p-1" id="header">--- Welcome Techies ---</h1>
+    
         <div className="row h-100">
       <div className="col-md-2 yellowcolor"  >
         <h4 className="text-center yellowcolor cursivefont" ><i>Famous Quotes</i></h4>
@@ -20,7 +25,9 @@ function App() {
         <p className="text-center">"Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking." -Steve Jobs</p>
       </div>
       <div className="col-md-7 ">
-      <Login/>
+        <ErrorBoundary>
+            <Login />
+            </ErrorBoundary>
       </div>
 
       <div className="col-md-3" id="div3" >
