@@ -1,12 +1,29 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 import Login from './Login';
 import './App.css';
 import ErrorBoundary from './ErrorBoundary'
 import Footer from './Footer';
+import axios from 'axios';
+import ApiContext from './ApiContext';
 
 function App(props) {
+ let data='';
+ function getUsers(){  
+  axios.get(`https://jsonplaceholder.typicode.com/users`, {})
+          .then(res => {
+               data = res.data
+              console.log(data[0].name);
+              setUsers(data[0].name);
+})
+} 
+
+const [users,setUsers] = useState();
   
+ useEffect(()=>{
+   
+  getUsers();
+},[]); 
   
   return (
     
@@ -25,9 +42,14 @@ function App(props) {
         <p className="text-center">"Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking." -Steve Jobs</p>
       </div>
       <div className="col-md-7 ">
-        <ErrorBoundary>
-            <Login />
-            </ErrorBoundary>
+      
+      <ApiContext.Provider
+        value={ users }>
+               
+      <ErrorBoundary>
+      <Login />
+      </ErrorBoundary>
+      </ApiContext.Provider>
       </div>
 
       <div className="col-md-3" id="div3" >

@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
-
-
+import sampleHOCFunction from './sampleHOC';
+import DisplayRecords from './DisplayRecords';
 
 class Login extends React.Component {
-
 
     constructor(props) {
         super(props);
@@ -12,9 +11,12 @@ class Login extends React.Component {
             sampleusername: "",
             password: "",
             samplepassword: "",
-            isLoggedIn: false
-            
+            isLoggedIn: false,
+            error: false
+
         }
+        this.checkUserInfo = this.checkUserInfo.bind(this);
+        this.myChangeHandler = this.myChangeHandler.bind(this);
     }
 
 
@@ -26,13 +28,14 @@ class Login extends React.Component {
 
     checkUserInfo = (event) => {
         event.preventDefault();
-        const matched = this.state.sampleusername === this.state.username &&  this.state.samplepassword === this.state.password;
-        
-        if(matched){
-            this.setState({isLoggedIn:"true"})
+        const matched = this.state.sampleusername === this.state.username && this.state.samplepassword === this.state.password;
+
+        if (matched) {
+            this.setState({ isLoggedIn: "true" })
         }
-        else{
-            throw new Error("wrong password");
+        else {
+            //throw new Error("wrong password");
+            this.setState({ error: true });
         }
     }
 
@@ -43,15 +46,21 @@ class Login extends React.Component {
         })
     }
 
-    shouldComponentUpdate(){
+    shouldComponentUpdate() {
         return true;
     }
 
     
-    render() {
 
+
+    render() {
+        if (this.state.error === true) {
+            throw new Error("wrong password")
+        }//why needed to put here?
+    const displayMessage = ({ name,loginstate }) => <h5 className="text-white">Hello {name}.You are {loginstate}</h5>;
+    const NewComponent = sampleHOCFunction(displayMessage);
         return (
-            
+
             <div>
                 {!this.state.isLoggedIn &&
 
@@ -77,15 +86,14 @@ class Login extends React.Component {
                     </div>
                 }
                 {
-                    this.state.isLoggedIn && 
-                    <h5 className="text-white">You are logged in</h5>
-                    }
+                    this.state.isLoggedIn &&
+                    <div>
+                    <DisplayRecords/>
+                    
+                    <NewComponent name={this.state.username} loginstate="logged in"/></div>
+                    
+                }
             </div>
-
-            
-
-
-
         )
     }
 

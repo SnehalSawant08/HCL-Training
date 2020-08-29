@@ -66,26 +66,6 @@ class Register extends React.Component {
             <textarea className="form-control mb-2" rows="4" name="address" cols="50" placeholder="Please enter your address"></textarea>
             </div>
         </div>
-        
-        {/* <div className="form-group row">
-            <label  class="col-2 col-form-label">Tech stack :</label>
-            <div className="col-10">
-            <input type="checkbox" name="techstack" value="Html" checked={this.state.techstack === "Html"}
-                  onChange={this.myChangeHandler}/>
-            <label className="p-2">HTML</label>
-            <input type="checkbox" name="techstack" value="React" checked={this.state.techstack === "React"}
-                  onChange={this.myChangeHandler}/>
-            <label className="p-2">React</label>
-            <input type="checkbox" name="techstack" value="Java" checked={this.state.techstack === "Java"}
-                  onChange={this.myChangeHandler}/>
-            <label className="p-2">Java</label>
-            </div>
-        </div> */}
-
-
-
-
-
           <input
             type='submit' onClick={this.displayUserInfo}
           />
