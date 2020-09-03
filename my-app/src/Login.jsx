@@ -65,7 +65,7 @@ class Login extends React.Component {
                 {!this.state.isLoggedIn &&
 
                     <div>
-                        <form className="text-white">
+                        <form className="text-white mt-4">
                             <div className="form-group row">
                                 <label className="col-2 col-form-label">Username :</label>
                                 <div className="col-10">
@@ -79,9 +79,11 @@ class Login extends React.Component {
                                     <input className="form-control" type="password" name="password" onChange={this.myChangeHandler} />
                                 </div>
                             </div>
+                            <div className="text-center p-2">
                             <input
-                                type='submit' onClick={this.checkUserInfo}
+                                type='submit' className="btn btn-light" onClick={this.checkUserInfo}
                             />
+                            </div>
                         </form>
                     </div>
                 }

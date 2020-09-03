@@ -16,11 +16,11 @@ class ErrorBoundary extends React.Component {
   
     render() {
       if (this.state.errorInfo){
-        
         return <h5 className="text-white">You entered wrong password</h5>;
       }
   
       return this.props.children; 
+     // return null;
     }
   }
   export default ErrorBoundary;
