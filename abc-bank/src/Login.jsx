@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import * as act from './actions/loginActions'
+import { Redirect } from 'react-router-dom'
 
 
 class Login extends Component {
@@ -19,7 +21,7 @@ class Login extends Component {
     
     checkUserInfo = (event) => {
         event.preventDefault();
-        if(this.state.username && this.state.password)
+        /* if(this.state.username && this.state.password)
         {
         axios.get('http://localhost:3000/users/',{
             params: {
@@ -27,9 +29,12 @@ class Login extends Component {
             }
           })
         .then(res=> {
-           
             console.log(res.data[0].password)
-        })} 
+        })}  */
+        console.log(this.props)
+        this.props.getUserDetails(this.state.username,this.state.password)
+        console.log("username= "+this.state.username)
+  
     }
 
     myChangeHandler = (event) => {
@@ -44,24 +49,26 @@ class Login extends Component {
         return (
 
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3">
+            <div className="container">
+                
+            
+                <div className="row">
+                    <div className="col-sm-3">
                
                     </div>
-                    <div class="col-sm-6">
+                    <div className="col-sm-6">
                         <br/><br/>
                         <form>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label text-white">Username</label>
-                                <div class="col-sm-10">
-                                    <input type="username" class="form-control" name="username" onChange={this.myChangeHandler} placeholder="Username" />
+                            <div className="form-group row">
+                                <label className="col-sm-2 col-form-label text-white">Username</label>
+                                <div className="col-sm-10">
+                                    <input type="username" className="form-control" name="username" onChange={this.myChangeHandler} placeholder="Username" />
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label text-white">Password</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" name="password" onChange={this.myChangeHandler}  placeholder="Password" />
+                            <div className="form-group row">
+                                <label className="col-sm-2 col-form-label text-white">Password</label>
+                                <div className="col-sm-10">
+                                    <input type="password" className="form-control" name="password" onChange={this.myChangeHandler}  placeholder="Password" />
                                 </div>
                             </div>
                             <input
@@ -69,9 +76,14 @@ class Login extends Component {
                             />
                         </form>
                     </div>
-                    <div class="col-sm-3">
-                 
+                    <div className="col-sm-3">
+                        {console.log(this.props.role)}
+                    {this.props.role === 'user' && 
+                    
+                    <Redirect to="/account"/>}
+                    
                     </div>
+                    
                 </div>
             </div>
             
@@ -79,5 +91,17 @@ class Login extends Component {
     }
 
 }
+const mapStateToProps=(state)=> {
+    console.log("dfshf"+state)
+    return {
+      role:state.role,
+      id:state.id
+    };
+  }
+  const mapDispatchToProps = (dispatch) => ({
+    getUserDetails: (name,pass) => {
+       dispatch(act.getUserDetails(name,pass));
+  }
+  })
+  export default connect(mapStateToProps,mapDispatchToProps)(Login);
 
-export default Login;

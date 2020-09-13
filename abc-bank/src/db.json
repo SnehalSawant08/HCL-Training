@@ -3,17 +3,77 @@
     {
       "username": "snehal",
       "password": "snehal",
-      "role": "user"
+      "role": "user",
+      "userid":"1"
     }
   ],
-  "comments": [
+  "accounts": [
+     {
+      "userid": 1,
+      "accountname": "Savings Account",
+      "accountnumber": 1,
+      "balance":1000,
+      "Last_transaction": "Sun May 24 2020 09:59:56 GMT+0530 (India Standard Time)",
+      "ownername":"Snehal Sawant",
+      "branch":"Texas"
+
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "userid": 1,
+      "accountname": "Checking Account",
+      "accountnumber": 2,
+      "balance":500,
+      "Last_transaction": "Sun May 22 2020 09:59:56 GMT+0530 (India Standard Time)",
+      "ownername":"Snehal Sawant",
+      "branch":"Texas"
     }
+
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "transactions":[
+    {
+      "accountnumber":1,
+      "Transaction_date":"May 22 2020 ",
+      "Transaction_remarks":"good",
+      "Transaction_type": "Debit",
+      "Balance_on_date":5000,
+      "Transaction_amount":200,
+      "From_account_number":2,
+      "To_account_number":1,
+      "Transaction_time_stamp":"Sun May 22 2020 09:59:56 GMT+0530 (India Standard Time)",
+      "Transaction_id":9000,
+      "Transaction_status":"Completed"
+    },
+    {
+      "accountnumber":1,
+      "Transaction_date":"May 22 2020 ",
+      "Transaction_remarks":"good",
+      "Transaction_type": "Debit",
+      "Balance_on_date":6000,
+      "Transaction_amount":500,
+      "From_account_number":2,
+      "To_account_number":1,
+      "Transaction_time_stamp":"Sun May 22 2020 09:59:56 GMT+0530 (India Standard Time)",
+      "Transaction_id":9020,
+      "Transaction_status":"Completed"
+    },
+    {
+      "accountnumber":2,
+      "Transaction_date":"May 21 2020 ",
+      "Transaction_remarks":"good",
+      "Transaction_type": "Credit",
+      "Balance_on_date":5000,
+      "Transaction_amount":200,
+      "From_account_number":2,
+      "To_account_number":1,
+      "Transaction_time_stamp":"Sun May 22 2020 09:59:56 GMT+0530 (India Standard Time)",
+      "Transaction_id":9010,
+      "Transaction_status":"Completed"
+    }
+
+  ]
+
+  
 }
