@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as act from './actions/loginActions';
+import {NavLink, Redirect} from 'react-router-dom'
 
 class Search extends Component {
 
     constructor(props) {
-        super(props);
+        super();
         this.state = {
             searchtext: '',
-            searchoption: ''
+            searchoption: '',
+            displaysearch:false,
+            goback:false
         }
         this.myChangeHandler = this.myChangeHandler.bind(this);
         this.searchData = this.searchData.bind(this);
@@ -24,6 +27,14 @@ class Search extends Component {
         console.log(this.state.searchoption)
         console.log(this.state.searchtext)
         this.props.getSearchResults(this.state.searchtext,this.state.searchoption)
+        this.setState({
+            displaysearch:true
+        })
+    }
+
+    routeback=(event)=>{
+        event.preventDefault();
+        this.setState({goback:true})
     }
 
     render() {
@@ -50,9 +61,14 @@ class Search extends Component {
                     <input
                         type='submit' onClick={this.searchData}
                     />
+                    <button className="m-3"  onClick={this.routeback}>Go Back</button>
+                    {this.state.goback &&
+                    <Redirect to="/adminuser"/>
+
+                    }
                 </form>
-                
-                {this.props.searchresults &&
+                <p></p>
+                {this.state.displaysearch && this.props.searchresults &&
                 <table className="text-white table-bordered">
                     <thead>
                         <tr>
@@ -61,16 +77,20 @@ class Search extends Component {
                             <th>Type</th>
                             <th>Balance </th>
                             <th>Branch Name</th>
+                            <th>Link to Mini statement</th>
+                            <th>Link to Detail statement</th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.props.searchresults.map((search, id) => (
                             <tr key={id}>
                                 <td>{search.ownername}</td>
-                                <td>{search.accountnumber}</td>
+                                <td>{search.id}</td>
                                 <td>{search.accountname}</td>
                                 <td>{search.balance}</td>
                                 <td>{search.branch}</td>
+                                <td><NavLink to={`/ministat/${search.accountnumber}`} > Mini statement </NavLink></td>
+                        <td><NavLink to={`/detailstat/${search.accountnumber}`}> Detail statement </NavLink></td>
                             
                             </tr>
                         ))} 
@@ -85,7 +105,7 @@ class Search extends Component {
 
 
 const mapStateToProps = (state) => {
-    console.log("accounts:" + state)
+    
     return {
 
         searchresults: state.searchresults

@@ -1,42 +1,40 @@
 import axios from 'axios'
 
-
+export const logout=()=>{
+  return{
+    type:'LOGOUT'
+  }
+}
 
 export const getUserDetailsSuccess = (userData) => {
-    return {
-      type: 'LOGIN_SUCCESS',
-      userData
-    }
-  };
+  return {
+    type: 'LOGIN_SUCCESS',
+    userData
+  }
+};
 
-  export const getUserDetailsFailure = (userData) => {
-    return {
-      type: 'LOGIN_FAILURE',
-      userData
-    }
-  };
-export const getUserDetails=(name,pass)=>{
-    // Returns a dispatcher function
-  // that dispatches an action at a later time
+export const getUserDetailsFailure = (userData) => {
+  return {
+    type: 'LOGIN_FAILURE',
+    userData
+  }
+};
+
+export const getUserDetails = (name, pass) => {
   return (dispatch) => {
-    // Returns a promise
-    return axios.get('http://localhost:3000/users/',{
-        params: {
-          username: name
-        }
-      })
+    return axios.get('http://localhost:3000/users/', {
+      params: {
+        username: name
+      }
+    })
       .then(response => {
-        //console.log(response.data[0].username)
-        console.log(pass);
-        if(response.data[0].password === pass)
-        {
+        if (response.data[0].password === pass) {
           dispatch(getUserDetailsSuccess(response.data[0]));
-          
         }
-        else{
+        else {
           dispatch(getUserDetailsFailure('false'))
         }
-      })  
+      })
   };
 }
 
@@ -47,24 +45,19 @@ export const getUserAccountsSuccess = (accountsData) => {
   }
 };
 
-export const getUserAccounts=(id)=>{
-  // Returns a dispatcher function
-// that dispatches an action at a later time
-return (dispatch) => {
-  // Returns a promise
-  return axios.get('http://localhost:3000/accounts/',{
+export const getUserAccounts = (id) => {
+  return (dispatch) => {
+    return axios.get('http://localhost:3000/accounts/', {
       params: {
         userid: id
       }
     })
-    .then(response => {
-      console.log(response.data);
-      
-          dispatch(getUserAccountsSuccess(response.data));
-          
-       
-    })  
-};
+      .then(response => {
+        dispatch(getUserAccountsSuccess(response.data));
+
+
+      })
+  };
 }
 
 export const getTransactionsMiniSuccess = (accountsData) => {
@@ -74,24 +67,17 @@ export const getTransactionsMiniSuccess = (accountsData) => {
   }
 };
 
-export const getTransactionsMini=(acnum)=>{
-  // Returns a dispatcher function
-// that dispatches an action at a later time
-return (dispatch) => {
-  // Returns a promise
-  return axios.get('http://localhost:3000/transactions/?accountnumber=?&_sort=Transaction_id&_order=desc&_limit=1',{
+export const getTransactionsMini = (acnum) => {
+  return (dispatch) => {
+    return axios.get('http://localhost:3000/transactions/?accountnumber=?&_sort=Transaction_id&_order=desc&_limit=10', {
       params: {
         accountnumber: acnum
       }
     })
-    .then(response => {
-      console.log(response.data);
-      
-          dispatch(getTransactionsMiniSuccess(response.data));
-          
-       
-    })  
-};
+      .then(response => {
+        dispatch(getTransactionsMiniSuccess(response.data));
+      })
+  };
 }
 
 
@@ -102,54 +88,41 @@ export const getTransactionsByAmountSuccess = (accountsData) => {
   }
 };
 
-export const getTransactionsByAmount=(acnum,option,amount)=>{
-  // Returns a dispatcher function
-// that dispatches an action at a later time
-
-if(option === "greater"){
-  console.log(option);
-  return (dispatch) => {
-    // Returns a promise
-    
-    return axios.get('http://localhost:3000/transactions/?accountnumber=?&Transaction_amount_gte=?',{
+export const getTransactionsByAmount = (acnum, option, amount) => {
+  if (option === "greater") {
+    return (dispatch) => {
+      return axios.get('http://localhost:3000/transactions/?accountnumber=?&Transaction_amount_gte=?', {
         params: {
           accountnumber: acnum,
-          Transaction_amount_gte:amount
+          Transaction_amount_gte: amount
         }
       })
-      .then(response => {
-        console.log(response.data);
-            dispatch(getTransactionsByAmountSuccess(response.data));
- 
-      })  
-  };
+        .then(response => {
+          dispatch(getTransactionsByAmountSuccess(response.data));
 
-} else {
-  console.log(option);
-  return (dispatch) => {
-    // Returns a promise
-    
-    return axios.get('http://localhost:3000/transactions/?accountnumber=?&Transaction_amount_lte=?',{
+        })
+    };
+
+  } else {
+    return (dispatch) => {
+      return axios.get('http://localhost:3000/transactions/?accountnumber=?&Transaction_amount_lte=?', {
         params: {
           accountnumber: acnum,
-          Transaction_amount_lte:amount
+          Transaction_amount_lte: amount
         }
       })
-      .then(response => {
-        console.log(response.data);
-        
-            dispatch(getTransactionsByAmountSuccess(response.data));
-            
-         
-      })  
-  };
-}
+        .then(response => {
+          dispatch(getTransactionsByAmountSuccess(response.data));
+
+
+        })
+    };
+  }
 
 
 
 
 }
-
 
 export const getSearchResultsSuccess = (accountsData) => {
   return {
@@ -158,38 +131,87 @@ export const getSearchResultsSuccess = (accountsData) => {
   }
 };
 
-export const getSearchResults=(searchtext,searchoption)=>{
-  // Returns a dispatcher function
-// that dispatches an action at a later time
-console.log(searchtext + '' +searchoption)
-return (dispatch) => {
-  // Returns a promise
-  
-  switch(searchoption){
-    case 'primary_owner': {
-      return axios.get('http://localhost:3000/accounts/',{params: {ownername_like: searchtext }
-    }).then(response => {
-      console.log(response.data);
-          dispatch(getSearchResultsSuccess(response.data)); 
-    })
-  }
-  case 'acnum':{
-    return axios.get('http://localhost:3000/accounts/',{params: {accountnumber: searchtext }
-  }).then(response => {
-    console.log(response.data);
-        dispatch(getSearchResultsSuccess(response.data)); 
-  })
-}
-case 'acname':{
-  return axios.get('http://localhost:3000/accounts/',{params: {accountname_like: searchtext }
-}).then(response => {
-  console.log(response.data);
-      dispatch(getSearchResultsSuccess(response.data)); 
-})
-}
-   default: return 'no data';
-    
-  }
+export const getSearchResults = (searchtext, searchoption) => {
+  return (dispatch) => {
+    switch (searchoption) {
+      case 'primary_owner': {
+        return axios.get('http://localhost:3000/accounts/', {
+          params: { ownername_like: searchtext }
+        }).then(response => {
+          dispatch(getSearchResultsSuccess(response.data));
+        })
+      }
+      case 'acnum': {
+        return axios.get('http://localhost:3000/accounts/', {
+          params: { id: searchtext }
+        }).then(response => {
+          dispatch(getSearchResultsSuccess(response.data));
+        })
+      }
+      case 'acname': {
+        return axios.get('http://localhost:3000/accounts/', {
+          params: { accountname_like: searchtext }
+        }).then(response => {
+          dispatch(getSearchResultsSuccess(response.data));
+        })
+      }
+      default: return 'no data';
 
-};//end of return 
+    }
+
+  };//end of return 
 }
+
+export const getCustomerId = (custname) => {
+  return (dispatch) => {
+    return axios.get('http://localhost:3000/users', {
+      params: {
+        ownername_like: custname
+      }
+    })
+      .then(response => {
+        dispatch(getCustomerIdSuccess(response.data));
+      })
+  };
+}
+
+export const getCustomerIdSuccess = (accountsData) => {
+  return {
+    type: 'GET_CUSTOMER_ID_SUCCESS',
+    accountsData
+  }
+};
+
+export const getBranches = () => {
+  return (dispatch) => {
+    return axios.get('http://localhost:3000/branches')
+      .then(response => {
+        dispatch(getBranchesSuccess(response.data));
+      })
+  };
+}
+
+export const getBranchesSuccess = (accountsData) => {
+  return {
+    type: 'GET_BRANCHES_SUCCESS',
+    accountsData
+  }
+};
+
+export const postAccountData = (data) => {
+  return (dispatch) => {
+    return axios.post('http://localhost:3000/accounts',
+      data
+    )
+      .then(response => {
+        dispatch(postAccountDataSuccess(response.data.id));
+      })
+  };
+}
+
+export const postAccountDataSuccess = (id) => {
+  return {
+    type: 'POST_ACCOUNT_SUCCESS',
+    id
+  }
+};

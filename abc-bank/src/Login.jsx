@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom'
 class Login extends Component {
 
     constructor(props) {
-        super(props);
+        super();
         this.state = {
             username: "",
             password: "",
@@ -21,19 +21,9 @@ class Login extends Component {
     
     checkUserInfo = (event) => {
         event.preventDefault();
-        /* if(this.state.username && this.state.password)
-        {
-        axios.get('http://localhost:3000/users/',{
-            params: {
-              username: this.state.username
-            }
-          })
-        .then(res=> {
-            console.log(res.data[0].password)
-        })}  */
-        console.log(this.props)
+      
         this.props.getUserDetails(this.state.username,this.state.password)
-        console.log("username= "+this.state.username)
+        
   
     }
 
@@ -76,13 +66,19 @@ class Login extends Component {
                             />
                         </form>
                     </div>
-                    <div className="col-sm-3">
-                        {console.log(this.props.role)}
-                    {this.props.role === 'user' && 
+                    <div className="col-sm-3"> </div>
+                    {this.props.userData === 'false' && 
+                    <p className="text-white">Password incorrect</p>}
+                    {this.props.userData && this.props.userData.role === 'user' && 
                     
-                    <Redirect to="/account"/>}
+                    <Redirect to={`/account/${this.props.userData.userid}`}/>}
+                     {this.props.userData && this.props.userData.role === 'admin' && 
                     
-                    </div>
+                    <Redirect to="/adminuser"/>}
+
+                  
+                    
+                    
                     
                 </div>
             </div>
@@ -92,10 +88,8 @@ class Login extends Component {
 
 }
 const mapStateToProps=(state)=> {
-    console.log("dfshf"+state)
     return {
-      role:state.role,
-      id:state.id
+      userData:state.userData
     };
   }
   const mapDispatchToProps = (dispatch) => ({

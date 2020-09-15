@@ -1,31 +1,47 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as act from './actions/loginActions'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Redirect} from 'react-router-dom'
 class Account extends Component {
 
 
     constructor(props) {
-        super(props);
+        super();
         this.viewUserAccounts = this.viewUserAccounts.bind(this);
-        
+        this.userid = props.match.params.userid;
+        this.state={
+            logout:false
+        }
+       
     }
 
+    
     viewUserAccounts = (event) => {
-        event.preventDefault();
-        this.props.getUserAccounts('1');
+        
+        
+        this.props.getUserAccounts(this.userid);
+    }
 
+    logoutapp=(event)=>{
+        event.preventDefault();
+        this.props.logout();
+        this.setState({logout:true})
     }
 
     
     render() {
         return (
             <div>
-                <p>hello {this.props.role} with id {this.props.userid}</p>
+                <p className="text-white">Hello  !!!</p>
                 <button onClick={this.viewUserAccounts}>View Accounts</button>
+                <button className="m-3" onClick={this.logoutapp}>Logout</button>
+                {this.state.logout === true&&
+                <Redirect to="/"/>
+
+                }
                 <br/>
                 <p></p>
-                {this.props.accounts &&
+                {this.props.accounts !== undefined &&
                 <table className="text-white table-bordered">
                     <thead>
                         <tr>
@@ -40,13 +56,13 @@ class Account extends Component {
                     <tbody>
                         {this.props.accounts.map((account, id) => (
                             <tr key={id}>
-                                <td>{account.accountnumber}</td>
+                                <td>{account.id}</td>
                                 <td>{account.accountname}</td>
                                 <td>{account.balance}</td>
                                 <td>{account.Last_transaction}</td>
                         
-                        <td><NavLink to={`/ministat/${account.accountnumber}`} > Mini statement </NavLink></td>
-                        <td><NavLink to={`/detailstat/${account.accountnumber}`}> Detail statement </NavLink></td>
+                        <td><NavLink to={`/ministat/${account.id}`} > Mini statement </NavLink></td>
+                        <td><NavLink to={`/detailstat/${account.id}`}> Detail statement </NavLink></td>
                             </tr>
                         ))} 
                         </tbody>
@@ -58,17 +74,17 @@ class Account extends Component {
     }
 }
 const mapStateToProps = (state) => {
-    console.log("accounts:" + state)
+   
     return {
-        role: state.role,
-        userid: state.userid,
-        accounts: state.accounts
+        accounts: state.accounts,
+        logout:state.accounts
     };
 }
 const mapDispatchToProps = (dispatch) => ({
     getUserAccounts: (userid) => {
         dispatch(act.getUserAccounts(userid));
-    }
+    },
+    logout:() =>{dispatch(act.logout())}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account);

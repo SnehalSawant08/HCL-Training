@@ -6,22 +6,19 @@ import * as act from './actions/loginActions'
 
 class MiniStatement extends Component {
 
-
     constructor(props) {
-        super(props);
-        this.acnum = props.match.params.acnum
+        super();
+        this.acnum = props.match.params.acnum;  
     }
     componentDidMount(){
         this.props.getTransactionsMini(this.acnum);
     }
    
-
     render() {
         return (
             <div>
                 <p className="text-white">Mini Statement Page </p>
                 <p className="text-white">Account Number {this.acnum}</p>
-
                 {this.props.transactions &&
                 <table className="text-white table-bordered">
                     <thead>
@@ -51,26 +48,18 @@ class MiniStatement extends Component {
                                 <td>{transaction.Transaction_time_stamp}</td>
                                 <td>{transaction.Transaction_id}</td>
                                 <td>{transaction.Transaction_status}</td>
-
-                        
-                        
                             </tr>
                         ))} 
                         </tbody>
                 </table>
-    }
-
-
+                }
             </div>
         )
     }
-
-
 }
+
 const mapStateToProps = (state) => {
-    console.log("accounts:" + state)
     return {
-        
         transactions: state.transactions
     };
 }

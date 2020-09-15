@@ -4,76 +4,340 @@
       "username": "snehal",
       "password": "snehal",
       "role": "user",
-      "userid":"1"
+      "userid": "1",
+      "ownername": "Snehal"
+    },
+    {
+      "username": "sawant",
+      "password": "sawant",
+      "role": "admin",
+      "userid": "2",
+      "ownername": "Sawant"
+    },
+    {
+      "username": "santosh",
+      "password": "santosh",
+      "role": "user",
+      "userid": "3",
+      "ownername": "Santosh Sawant"
     }
   ],
   "accounts": [
-     {
-      "userid": 1,
+    {
+      "id": 1,
+      "userid": "1",
       "accountname": "Savings Account",
-      "accountnumber": 1,
-      "balance":1000,
+      "balance": "1000",
       "Last_transaction": "Sun May 24 2020 09:59:56 GMT+0530 (India Standard Time)",
-      "ownername":"Snehal Sawant",
-      "branch":"Texas"
-
+      "ownername": "Snehal Sawant",
+      "branch": "Texas"
     },
     {
-      "userid": 1,
+      "userid": "1",
       "accountname": "Checking Account",
-      "accountnumber": 2,
-      "balance":500,
+      "id": 2,
+      "balance": "500",
       "Last_transaction": "Sun May 22 2020 09:59:56 GMT+0530 (India Standard Time)",
-      "ownername":"Snehal Sawant",
-      "branch":"Texas"
+      "ownername": "Snehal Sawant",
+      "branch": "Texas"
+    },
+    {
+      "userid": "3",
+      "accountname": "CD",
+      "balance": "34535",
+      "Last_transaction": "",
+      "ownername": "S",
+      "branch": "Iowa",
+      "id": 3
     }
-
   ],
   "profile": {
     "name": "typicode"
   },
-  "transactions":[
+  "transactions": [
     {
-      "accountnumber":1,
-      "Transaction_date":"May 22 2020 ",
-      "Transaction_remarks":"good",
+      "id":1,
+      "accountnumber": 1,
+      "Transaction_date": "May 22 2020 ",
+      "Transaction_remarks": "good",
       "Transaction_type": "Debit",
-      "Balance_on_date":5000,
-      "Transaction_amount":200,
-      "From_account_number":2,
-      "To_account_number":1,
-      "Transaction_time_stamp":"Sun May 22 2020 09:59:56 GMT+0530 (India Standard Time)",
-      "Transaction_id":9000,
-      "Transaction_status":"Completed"
+      "Balance_on_date": 5000,
+      "Transaction_amount": 200,
+      "From_account_number": 2,
+      "To_account_number": 1,
+      "Transaction_time_stamp": "Sun May 22 2020 09:59:56 GMT+0530 (India Standard Time)",
+      "Transaction_id": 9000,
+      "Transaction_status": "Completed"
     },
     {
-      "accountnumber":1,
-      "Transaction_date":"May 22 2020 ",
-      "Transaction_remarks":"good",
+      "id":2,
+      "accountnumber": 1,
+      "Transaction_date": "May 22 2020 ",
+      "Transaction_remarks": "good",
       "Transaction_type": "Debit",
-      "Balance_on_date":6000,
-      "Transaction_amount":500,
-      "From_account_number":2,
-      "To_account_number":1,
-      "Transaction_time_stamp":"Sun May 22 2020 09:59:56 GMT+0530 (India Standard Time)",
-      "Transaction_id":9020,
-      "Transaction_status":"Completed"
+      "Balance_on_date": 6000,
+      "Transaction_amount": 500,
+      "From_account_number": 2,
+      "To_account_number": 1,
+      "Transaction_time_stamp": "Sun May 22 2020 09:59:56 GMT+0530 (India Standard Time)",
+      "Transaction_id": 9020,
+      "Transaction_status": "Completed"
     },
     {
-      "accountnumber":2,
-      "Transaction_date":"May 21 2020 ",
-      "Transaction_remarks":"good",
+      "id":3,
+      "accountnumber": 2,
+      "Transaction_date": "May 21 2020 ",
+      "Transaction_remarks": "good",
       "Transaction_type": "Credit",
-      "Balance_on_date":5000,
-      "Transaction_amount":200,
-      "From_account_number":2,
-      "To_account_number":1,
-      "Transaction_time_stamp":"Sun May 22 2020 09:59:56 GMT+0530 (India Standard Time)",
-      "Transaction_id":9010,
-      "Transaction_status":"Completed"
+      "Balance_on_date": 5000,
+      "Transaction_amount": 200,
+      "From_account_number": 2,
+      "To_account_number": 1,
+      "Transaction_time_stamp": "Sun May 22 2020 09:59:56 GMT+0530 (India Standard Time)",
+      "Transaction_id": 9010,
+      "Transaction_status": "Completed"
     }
-
+  ],
+  "branches": [
+    {
+      "name": "",
+      "abbreviation": ""
+    },
+    {
+      "name": "Alabama",
+      "abbreviation": "AL"
+    },
+    {
+      "name": "Alaska",
+      "abbreviation": "AK"
+    },
+    {
+      "name": "American Samoa",
+      "abbreviation": "AS"
+    },
+    {
+      "name": "Arizona",
+      "abbreviation": "AZ"
+    },
+    {
+      "name": "Arkansas",
+      "abbreviation": "AR"
+    },
+    {
+      "name": "California",
+      "abbreviation": "CA"
+    },
+    {
+      "name": "Colorado",
+      "abbreviation": "CO"
+    },
+    {
+      "name": "Connecticut",
+      "abbreviation": "CT"
+    },
+    {
+      "name": "Delaware",
+      "abbreviation": "DE"
+    },
+    {
+      "name": "District Of Columbia",
+      "abbreviation": "DC"
+    },
+    {
+      "name": "Federated States Of Micronesia",
+      "abbreviation": "FM"
+    },
+    {
+      "name": "Florida",
+      "abbreviation": "FL"
+    },
+    {
+      "name": "Georgia",
+      "abbreviation": "GA"
+    },
+    {
+      "name": "Guam",
+      "abbreviation": "GU"
+    },
+    {
+      "name": "Hawaii",
+      "abbreviation": "HI"
+    },
+    {
+      "name": "Idaho",
+      "abbreviation": "ID"
+    },
+    {
+      "name": "Illinois",
+      "abbreviation": "IL"
+    },
+    {
+      "name": "Indiana",
+      "abbreviation": "IN"
+    },
+    {
+      "name": "Iowa",
+      "abbreviation": "IA"
+    },
+    {
+      "name": "Kansas",
+      "abbreviation": "KS"
+    },
+    {
+      "name": "Kentucky",
+      "abbreviation": "KY"
+    },
+    {
+      "name": "Louisiana",
+      "abbreviation": "LA"
+    },
+    {
+      "name": "Maine",
+      "abbreviation": "ME"
+    },
+    {
+      "name": "Marshall Islands",
+      "abbreviation": "MH"
+    },
+    {
+      "name": "Maryland",
+      "abbreviation": "MD"
+    },
+    {
+      "name": "Massachusetts",
+      "abbreviation": "MA"
+    },
+    {
+      "name": "Michigan",
+      "abbreviation": "MI"
+    },
+    {
+      "name": "Minnesota",
+      "abbreviation": "MN"
+    },
+    {
+      "name": "Mississippi",
+      "abbreviation": "MS"
+    },
+    {
+      "name": "Missouri",
+      "abbreviation": "MO"
+    },
+    {
+      "name": "Montana",
+      "abbreviation": "MT"
+    },
+    {
+      "name": "Nebraska",
+      "abbreviation": "NE"
+    },
+    {
+      "name": "Nevada",
+      "abbreviation": "NV"
+    },
+    {
+      "name": "New Hampshire",
+      "abbreviation": "NH"
+    },
+    {
+      "name": "New Jersey",
+      "abbreviation": "NJ"
+    },
+    {
+      "name": "New Mexico",
+      "abbreviation": "NM"
+    },
+    {
+      "name": "New York",
+      "abbreviation": "NY"
+    },
+    {
+      "name": "North Carolina",
+      "abbreviation": "NC"
+    },
+    {
+      "name": "North Dakota",
+      "abbreviation": "ND"
+    },
+    {
+      "name": "Northern Mariana Islands",
+      "abbreviation": "MP"
+    },
+    {
+      "name": "Ohio",
+      "abbreviation": "OH"
+    },
+    {
+      "name": "Oklahoma",
+      "abbreviation": "OK"
+    },
+    {
+      "name": "Oregon",
+      "abbreviation": "OR"
+    },
+    {
+      "name": "Palau",
+      "abbreviation": "PW"
+    },
+    {
+      "name": "Pennsylvania",
+      "abbreviation": "PA"
+    },
+    {
+      "name": "Puerto Rico",
+      "abbreviation": "PR"
+    },
+    {
+      "name": "Rhode Island",
+      "abbreviation": "RI"
+    },
+    {
+      "name": "South Carolina",
+      "abbreviation": "SC"
+    },
+    {
+      "name": "South Dakota",
+      "abbreviation": "SD"
+    },
+    {
+      "name": "Tennessee",
+      "abbreviation": "TN"
+    },
+    {
+      "name": "Texas",
+      "abbreviation": "TX"
+    },
+    {
+      "name": "Utah",
+      "abbreviation": "UT"
+    },
+    {
+      "name": "Vermont",
+      "abbreviation": "VT"
+    },
+    {
+      "name": "Virgin Islands",
+      "abbreviation": "VI"
+    },
+    {
+      "name": "Virginia",
+      "abbreviation": "VA"
+    },
+    {
+      "name": "Washington",
+      "abbreviation": "WA"
+    },
+    {
+      "name": "West Virginia",
+      "abbreviation": "WV"
+    },
+    {
+      "name": "Wisconsin",
+      "abbreviation": "WI"
+    },
+    {
+      "name": "Wyoming",
+      "abbreviation": "WY"
+    }
   ]
-
-  
 }
