@@ -41,6 +41,9 @@ class Account extends Component {
                 }
                 <br/>
                 <p></p>
+                {this.props.message === "Network error" && 
+                    <p className="text-white">Network issue. Try Later</p>
+                    }
                 {this.props.accounts !== undefined &&
                 <table className="text-white table-bordered">
                     <thead>
@@ -77,7 +80,8 @@ const mapStateToProps = (state) => {
    
     return {
         accounts: state.accounts,
-        logout:state.accounts
+        logout:state.accounts,
+        message:state.message
     };
 }
 const mapDispatchToProps = (dispatch) => ({

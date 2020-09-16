@@ -6,6 +6,14 @@ export const logout=()=>{
   }
 }
 
+export const apifailure = (message)=>{
+  return{
+    type:'API_FAILURE',
+    message
+
+  }
+}
+
 export const getUserDetailsSuccess = (userData) => {
   return {
     type: 'LOGIN_SUCCESS',
@@ -34,7 +42,9 @@ export const getUserDetails = (name, pass) => {
         else {
           dispatch(getUserDetailsFailure('false'))
         }
-      })
+      }).catch(err=>{dispatch(apifailure('Network error'))}
+          
+      )
   };
 }
 
@@ -54,9 +64,7 @@ export const getUserAccounts = (id) => {
     })
       .then(response => {
         dispatch(getUserAccountsSuccess(response.data));
-
-
-      })
+      }).catch(err=>{dispatch(apifailure('Network error'))})
   };
 }
 
@@ -76,7 +84,7 @@ export const getTransactionsMini = (acnum) => {
     })
       .then(response => {
         dispatch(getTransactionsMiniSuccess(response.data));
-      })
+      }).catch(err=>{dispatch(apifailure('Network error'))})
   };
 }
 
@@ -100,7 +108,7 @@ export const getTransactionsByAmount = (acnum, option, amount) => {
         .then(response => {
           dispatch(getTransactionsByAmountSuccess(response.data));
 
-        })
+        }).catch(err=>{dispatch(apifailure('Network error'))})
     };
 
   } else {
@@ -139,21 +147,21 @@ export const getSearchResults = (searchtext, searchoption) => {
           params: { ownername_like: searchtext }
         }).then(response => {
           dispatch(getSearchResultsSuccess(response.data));
-        })
+        }).catch(err=>{dispatch(apifailure('Network error'))})
       }
       case 'acnum': {
         return axios.get('http://localhost:3000/accounts/', {
           params: { id: searchtext }
         }).then(response => {
           dispatch(getSearchResultsSuccess(response.data));
-        })
+        }).catch(err=>{dispatch(apifailure('Network error'))})
       }
       case 'acname': {
         return axios.get('http://localhost:3000/accounts/', {
           params: { accountname_like: searchtext }
         }).then(response => {
           dispatch(getSearchResultsSuccess(response.data));
-        })
+        }).catch(err=>{dispatch(apifailure('Network error'))})
       }
       default: return 'no data';
 
@@ -171,7 +179,7 @@ export const getCustomerId = (custname) => {
     })
       .then(response => {
         dispatch(getCustomerIdSuccess(response.data));
-      })
+      }).catch(err=>{dispatch(apifailure('Network error'))})
   };
 }
 
@@ -187,7 +195,7 @@ export const getBranches = () => {
     return axios.get('http://localhost:3000/branches')
       .then(response => {
         dispatch(getBranchesSuccess(response.data));
-      })
+      }).catch(err=>{dispatch(apifailure('Network error'))})
   };
 }
 
@@ -205,7 +213,7 @@ export const postAccountData = (data) => {
     )
       .then(response => {
         dispatch(postAccountDataSuccess(response.data.id));
-      })
+      }).catch(err=>{dispatch(apifailure('Network error'))})
   };
 }
 

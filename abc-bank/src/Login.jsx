@@ -67,6 +67,9 @@ class Login extends Component {
                         </form>
                     </div>
                     <div className="col-sm-3"> </div>
+                    {this.props.message === "Network error" && 
+                    <p className="text-white">Network issue. Try Later</p>
+                    }
                     {this.props.userData === 'false' && 
                     <p className="text-white">Password incorrect</p>}
                     {this.props.userData && this.props.userData.role === 'user' && 
@@ -89,7 +92,8 @@ class Login extends Component {
 }
 const mapStateToProps=(state)=> {
     return {
-      userData:state.userData
+      userData:state.userData,
+      message:state.message
     };
   }
   const mapDispatchToProps = (dispatch) => ({

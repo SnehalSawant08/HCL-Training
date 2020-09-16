@@ -179,6 +179,11 @@ class AdminUserPage extends Component {
                             <button onClick={this.searchCustomer}>Search Customer</button>
                         </div>
                     </div>
+                    <p>
+                    {this.props.message === "Network error" && 
+                    <p className="text-white">Network issue. Try Later</p>
+                    }
+                    </p>
 
                     {this.state.showids &&
                         <div>
@@ -208,7 +213,8 @@ const mapStateToProps = (state) => {
         customeriddata: state.customeriddata,
         branches: state.branches,
         id: state.id,
-        logout: state.accounts
+        logout: state.accounts,
+        message:state.message
     };
 }
 

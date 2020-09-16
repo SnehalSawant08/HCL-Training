@@ -18,7 +18,10 @@ class MiniStatement extends Component {
         return (
             <div>
                 <p className="text-white">Mini Statement Page </p>
-                <p className="text-white">Account Number {this.acnum}</p>
+                <p className="text-white">Account Number: {this.acnum}</p>
+                {this.props.message === "Network error" && 
+                    <p className="text-white">Network issue. Try Later</p>
+                    }
                 {this.props.transactions &&
                 <table className="text-white table-bordered">
                     <thead>
@@ -60,7 +63,8 @@ class MiniStatement extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        transactions: state.transactions
+        transactions: state.transactions,
+        message:state.messsage
     };
 }
 

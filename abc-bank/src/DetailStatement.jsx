@@ -94,6 +94,10 @@ class DetailStatement extends Component {
 
                     </div>
                 }
+
+                    {this.props.message === "Network error" && 
+                    <p className="text-white">Network issue. Try Later</p>
+                    }
             </div>
         )
     }
@@ -104,7 +108,8 @@ const mapStateToProps = (state) => {
     console.log("accounts:" + state)
     return {
 
-        transbyamount: state.transbyamount
+        transbyamount: state.transbyamount,
+        message:state.message
     };
 }
 

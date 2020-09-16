@@ -68,6 +68,9 @@ class Search extends Component {
                     }
                 </form>
                 <p></p>
+                {this.props.message === "Network error" && 
+                    <p className="text-white">Network issue. Try Later</p>
+                    }
                 {this.state.displaysearch && this.props.searchresults &&
                 <table className="text-white table-bordered">
                     <thead>
@@ -108,7 +111,8 @@ const mapStateToProps = (state) => {
     
     return {
 
-        searchresults: state.searchresults
+        searchresults: state.searchresults,
+        message:state.message
     };
 }
 

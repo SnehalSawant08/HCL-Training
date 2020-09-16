@@ -1,4 +1,4 @@
-import {LOGOUT,POST_ACCOUNT_SUCCESS,GET_BRANCHES_SUCCESS,GET_CUSTOMER_ID_SUCCESS,LOGIN_SUCCESS,LOGIN_FAILURE,GET_USER_ACCOUNTS_SUCCESS,GET_TRANSACTIONS_MINI_SUCCESS,GET_TRANSACTIONS_BY_AMOUNT_SUCCESS,GET_SEARCH_RESULTS} from '../actions/types'
+import {API_FAILURE,LOGOUT,POST_ACCOUNT_SUCCESS,GET_BRANCHES_SUCCESS,GET_CUSTOMER_ID_SUCCESS,LOGIN_SUCCESS,LOGIN_FAILURE,GET_USER_ACCOUNTS_SUCCESS,GET_TRANSACTIONS_MINI_SUCCESS,GET_TRANSACTIONS_BY_AMOUNT_SUCCESS,GET_SEARCH_RESULTS} from '../actions/types'
 
  const initialState = {
     role: '',
@@ -9,7 +9,8 @@ import {LOGOUT,POST_ACCOUNT_SUCCESS,GET_BRANCHES_SUCCESS,GET_CUSTOMER_ID_SUCCESS
     searchresults:[],
     customeriddata:[],
     branches:[],
-    userData:[]
+    userData:[],
+    message:''
   };
  
 /* function reducer(state=initialState, action) {
@@ -80,6 +81,11 @@ import {LOGOUT,POST_ACCOUNT_SUCCESS,GET_BRANCHES_SUCCESS,GET_CUSTOMER_ID_SUCCESS
                     id:action.id
                   }
       }
+      case API_FAILURE:
+        return {
+          ...state,
+          message:action.message
+        }
             
         default:
           return state;
