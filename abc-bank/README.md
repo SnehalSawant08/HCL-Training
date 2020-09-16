@@ -4,10 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
  The objective of this application to automates daily banking operations. 
  The project has followinf funtionalities:
- 1)Login and logout function
- 2)Each user can view his accounts and transactions
+ 1) Login and logout function
+ 2) Each user can view his accounts and transactions
  3) Search the accounts based on some criteria
- 4) Admin can create account and view the summary reposrts as well
+ 4) Admin can create account and view the summary reports as well
  
  To run this project you will need to run the json-server as the application uses db.json file as a database(dummy)
  go to =>abc/bank/src and run the command json-server --watch db.json 
